@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CidadesIndexRouteImport } from './routes/cidades.index'
+import { Route as CidadesSlugRouteImport } from './routes/cidades.$slug'
+import { Route as EditoriaSlugRouteImport } from './routes/editoria.$slug'
+import { Route as EmpregosIndexRouteImport } from './routes/empregos.index'
+import { Route as EmpregosIdRouteImport } from './routes/empregos.$id'
+import { Route as GuiaIndexRouteImport } from './routes/guia.index'
+import { Route as GuiaSlugRouteImport } from './routes/guia.$slug'
+import { Route as NoticiaIdRouteImport } from './routes/noticia.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CidadesIndexRoute = CidadesIndexRouteImport.update({
+  id: '/cidades/',
+  path: '/cidades/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CidadesSlugRoute = CidadesSlugRouteImport.update({
+  id: '/cidades/$slug',
+  path: '/cidades/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EditoriaSlugRoute = EditoriaSlugRouteImport.update({
+  id: '/editoria/$slug',
+  path: '/editoria/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmpregosIndexRoute = EmpregosIndexRouteImport.update({
+  id: '/empregos/',
+  path: '/empregos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmpregosIdRoute = EmpregosIdRouteImport.update({
+  id: '/empregos/$id',
+  path: '/empregos/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaIndexRoute = GuiaIndexRouteImport.update({
+  id: '/guia/',
+  path: '/guia/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuiaSlugRoute = GuiaSlugRouteImport.update({
+  id: '/guia/$slug',
+  path: '/guia/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiaIdRoute = NoticiaIdRouteImport.update({
+  id: '/noticia/$id',
+  path: '/noticia/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cidades/$slug': typeof CidadesSlugRoute
+  '/editoria/$slug': typeof EditoriaSlugRoute
+  '/empregos/$id': typeof EmpregosIdRoute
+  '/guia/$slug': typeof GuiaSlugRoute
+  '/noticia/$id': typeof NoticiaIdRoute
+  '/cidades/': typeof CidadesIndexRoute
+  '/empregos/': typeof EmpregosIndexRoute
+  '/guia/': typeof GuiaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cidades/$slug': typeof CidadesSlugRoute
+  '/editoria/$slug': typeof EditoriaSlugRoute
+  '/empregos/$id': typeof EmpregosIdRoute
+  '/guia/$slug': typeof GuiaSlugRoute
+  '/noticia/$id': typeof NoticiaIdRoute
+  '/cidades': typeof CidadesIndexRoute
+  '/empregos': typeof EmpregosIndexRoute
+  '/guia': typeof GuiaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cidades/$slug': typeof CidadesSlugRoute
+  '/editoria/$slug': typeof EditoriaSlugRoute
+  '/empregos/$id': typeof EmpregosIdRoute
+  '/guia/$slug': typeof GuiaSlugRoute
+  '/noticia/$id': typeof NoticiaIdRoute
+  '/cidades/': typeof CidadesIndexRoute
+  '/empregos/': typeof EmpregosIndexRoute
+  '/guia/': typeof GuiaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cidades/$slug'
+    | '/editoria/$slug'
+    | '/empregos/$id'
+    | '/guia/$slug'
+    | '/noticia/$id'
+    | '/cidades/'
+    | '/empregos/'
+    | '/guia/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cidades/$slug'
+    | '/editoria/$slug'
+    | '/empregos/$id'
+    | '/guia/$slug'
+    | '/noticia/$id'
+    | '/cidades'
+    | '/empregos'
+    | '/guia'
+  id:
+    | '__root__'
+    | '/'
+    | '/cidades/$slug'
+    | '/editoria/$slug'
+    | '/empregos/$id'
+    | '/guia/$slug'
+    | '/noticia/$id'
+    | '/cidades/'
+    | '/empregos/'
+    | '/guia/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CidadesSlugRoute: typeof CidadesSlugRoute
+  EditoriaSlugRoute: typeof EditoriaSlugRoute
+  EmpregosIdRoute: typeof EmpregosIdRoute
+  GuiaSlugRoute: typeof GuiaSlugRoute
+  NoticiaIdRoute: typeof NoticiaIdRoute
+  CidadesIndexRoute: typeof CidadesIndexRoute
+  EmpregosIndexRoute: typeof EmpregosIndexRoute
+  GuiaIndexRoute: typeof GuiaIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cidades/': {
+      id: '/cidades/'
+      path: '/cidades'
+      fullPath: '/cidades/'
+      preLoaderRoute: typeof CidadesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cidades/$slug': {
+      id: '/cidades/$slug'
+      path: '/cidades/$slug'
+      fullPath: '/cidades/$slug'
+      preLoaderRoute: typeof CidadesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/editoria/$slug': {
+      id: '/editoria/$slug'
+      path: '/editoria/$slug'
+      fullPath: '/editoria/$slug'
+      preLoaderRoute: typeof EditoriaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/empregos/': {
+      id: '/empregos/'
+      path: '/empregos'
+      fullPath: '/empregos/'
+      preLoaderRoute: typeof EmpregosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/empregos/$id': {
+      id: '/empregos/$id'
+      path: '/empregos/$id'
+      fullPath: '/empregos/$id'
+      preLoaderRoute: typeof EmpregosIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia/': {
+      id: '/guia/'
+      path: '/guia'
+      fullPath: '/guia/'
+      preLoaderRoute: typeof GuiaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guia/$slug': {
+      id: '/guia/$slug'
+      path: '/guia/$slug'
+      fullPath: '/guia/$slug'
+      preLoaderRoute: typeof GuiaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticia/$id': {
+      id: '/noticia/$id'
+      path: '/noticia/$id'
+      fullPath: '/noticia/$id'
+      preLoaderRoute: typeof NoticiaIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CidadesSlugRoute: CidadesSlugRoute,
+  EditoriaSlugRoute: EditoriaSlugRoute,
+  EmpregosIdRoute: EmpregosIdRoute,
+  GuiaSlugRoute: GuiaSlugRoute,
+  NoticiaIdRoute: NoticiaIdRoute,
+  CidadesIndexRoute: CidadesIndexRoute,
+  EmpregosIndexRoute: EmpregosIndexRoute,
+  GuiaIndexRoute: GuiaIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
