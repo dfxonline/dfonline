@@ -5,8 +5,8 @@ export type Article = {
   source: Source;
   title: string;
   excerpt: string;
-  image?: string;
-  imageCredit?: string;
+  image?: string | undefined;
+  imageCredit?: string | undefined;
   date: string;
   author: string;
   link: string;

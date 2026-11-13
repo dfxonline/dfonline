@@ -57,7 +57,7 @@ function EditoriaPage() {
 
       {items.length ? (
         <>
-          <div className="mt-8"><HeroCard a={items[0]} /></div>
+          <div className="mt-8"><HeroCard a={items[0]!} /></div>
           <div className="mt-10">
             <SectionHeader title={`Mais em ${ed.label}`} to={<Link to="/">Início →</Link>} />
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">{items.slice(1).map((a) => <NewsCard key={a.id} a={a} />)}</div>
