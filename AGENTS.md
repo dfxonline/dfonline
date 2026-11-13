@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep home city-news selection in a browser-safe pure helper, filtering regional associations and sorting publication timestamps, so its editorial selection can be tested without fetching feeds.
