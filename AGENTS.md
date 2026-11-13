@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep home city-news selection in a browser-safe pure helper, filtering regional associations and sorting publication timestamps, so its editorial selection can be tested without fetching feeds.
+- Keep home city-news selection in a browser-safe pure helper sorting the DF feed by publication timestamps, including items with no detected RA, so selection is testable and does not hide local reporting.

@@ -7,11 +7,11 @@ const article = (id: string, date: string, ras: string[]): Article => ({
 });
 
 describe("City news on the home page", () => {
-  it("only selects news associated with DF cities", () => {
+  it("includes DF news even when no individual RA is identified", () => {
     expect(recentCityNews([
       article("local", "2026-11-12T15:00:00Z", ["taguatinga"]),
       article("national", "2026-11-13T15:00:00Z", []),
-    ]).map((a) => a.id)).toEqual(["local"]);
+    ]).map((a) => a.id)).toEqual(["national", "local"]);
   });
 
   it("puts the most recent city news first", () => {
