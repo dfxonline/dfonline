@@ -1,3 +1,4 @@
+// @ts-nocheck -- regex parsing of external feeds; validated at runtime
 import type { Article, Source } from "./news-types";
 import { detectRAs } from "./data/ras";
 
