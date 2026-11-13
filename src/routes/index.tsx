@@ -6,7 +6,8 @@ import { EmptyNews, HeroCard, NewsCard, NewsRow, SectionHeader } from "@/compone
 import { BusinessCard } from "@/components/site/Cards";
 import { BUSINESSES } from "@/lib/data/businesses";
 import { JOBS } from "@/lib/data/jobs";
-import { RAS, getRA } from "@/lib/data/ras";
+import { getRA } from "@/lib/data/ras";
+import { recentCityNews } from "@/lib/city-news";
 import { timeAgo } from "@/lib/format";
 
 export const Route = createFileRoute("/")({
@@ -16,6 +17,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Últimas notícias de Brasília e das 35 Regiões Administrativas do DF, guia de empresas locais e vagas de emprego." },
       { property: "og:title", content: "DF Online — Notícias de Brasília e das cidades do DF" },
       { property: "og:description", content: "Notícias do DF, guia de empresas e vagas de emprego em um só lugar." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   loader: ({ context }) =>
@@ -43,6 +46,7 @@ function Home() {
   const lead = df[0] ?? ultimas[0];
   const side = (df.length > 1 ? df.slice(1, 5) : ultimas.slice(1, 5));
   const dfRest = df.slice(5, 11);
+  const cityNews = recentCityNews(df);
   const featuredBiz = BUSINESSES.filter((b) => b.featured).slice(0, 4);
   const featuredJobs = JOBS.filter((j) => j.featured).slice(0, 4);
 
@@ -85,19 +89,12 @@ function Home() {
 
         {/* Cidades */}
         <section className="mt-12">
-          <SectionHeader title="Cidades do DF" to={<Link to="/cidades">Todas as 35 RAs →</Link>} />
-          <div className="flex flex-wrap gap-2">
-            {RAS.map((ra) => (
-              <Link
-                key={ra.slug}
-                to="/cidades/$slug"
-                params={{ slug: ra.slug }}
-                className="rounded-full border bg-card px-3 py-1.5 text-sm transition-colors hover:border-primary hover:text-primary"
-              >
-                <span className="font-bold text-muted-foreground">RA {ra.roman}</span> {ra.name}
-              </Link>
-            ))}
-          </div>
+          <SectionHeader title="Cidades do DF" />
+          {cityNews.length > 0 ? (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {cityNews.map((a) => <NewsCard key={a.id} a={a} />)}
+            </div>
+          ) : <EmptyNews message="Não há notícias recentes das cidades disponíveis no momento." />}
         </section>
 
         {/* DF + Brasil */}

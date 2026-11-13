@@ -22,6 +22,7 @@ export const Route = createFileRoute("/noticia/$id")({
       { property: "og:title", content: loaderData.title },
       { property: "og:description", content: loaderData.excerpt },
       { property: "og:type", content: "article" },
+      { name: "twitter:card", content: "summary_large_image" },
     ];
     if (loaderData.image?.startsWith("https://"))
       m.push({ property: "og:image", content: loaderData.image }, { name: "twitter:image", content: loaderData.image });
@@ -47,12 +48,11 @@ function Article() {
   return (
     <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 lg:grid-cols-3">
       <article className="lg:col-span-2">
-        <span className="text-xs font-bold uppercase tracking-wider text-primary">{src}</span>
         <h1 className="mt-2 font-display text-3xl font-bold leading-tight md:text-5xl">{a.title}</h1>
         <p className="mt-4 text-lg text-muted-foreground">{a.excerpt}</p>
         <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 border-y py-3 text-sm text-muted-foreground">
-          <span>Por <strong className="text-foreground">{a.author}</strong></span>
-          {a.source !== "ccbb" && <span>{formatDate(a.date, true)}</span>}
+          <span>Por <strong className="text-foreground">Redação DF Online</strong></span>
+          <time dateTime={a.date}>{formatDate(a.date, true)}</time>
           {a.ras.map((s) => {
             const ra = getRA(s);
             return ra ? (
