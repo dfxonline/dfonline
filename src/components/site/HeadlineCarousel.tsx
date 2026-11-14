@@ -24,7 +24,7 @@ export function HeadlineCarousel({ articles }: { articles: Article[] }) {
   }, [api]);
 
   return (
-    <Carousel opts={{ loop: articles.length > 1 }} setApi={setApi} aria-label="Principais notícias" className="min-w-0">
+    <Carousel opts={{ loop: articles.length > 1, duration: 0 }} setApi={setApi} aria-label="Principais notícias" className="min-w-0">
       <CarouselContent>
         {articles.map((article, index) => (
           <CarouselItem key={article.id} aria-label={`${index + 1} de ${articles.length}`} aria-hidden={index !== active} inert={index !== active}>
