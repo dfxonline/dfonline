@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRight, Briefcase, MapPin } from "lucide-react";
 import { ccbbQuery, dfNewsQuery, editoriaQuery } from "@/lib/news.functions";
-import { EmptyNews, HeroCard, NewsCard, NewsRow, SectionHeader } from "@/components/site/NewsCard";
+import { EmptyNews, NewsCard, NewsRow, SectionHeader } from "@/components/site/NewsCard";
+import { HeadlineCarousel } from "@/components/site/HeadlineCarousel";
 import { BusinessCard } from "@/components/site/Cards";
 import { BUSINESSES } from "@/lib/data/businesses";
 import { JOBS } from "@/lib/data/jobs";
@@ -43,7 +44,7 @@ function Home() {
   const { data: economia } = useSuspenseQuery(editoriaQuery("economia"));
   const { data: ccbb } = useSuspenseQuery(ccbbQuery());
 
-  const lead = df[0] ?? ultimas[0];
+  const headlines = (df.length ? df : ultimas).slice(0, 5);
   const side = (df.length > 1 ? df.slice(1, 5) : ultimas.slice(1, 5));
   const dfRest = df.slice(5, 11);
   const cityNews = recentCityNews(df);
@@ -71,10 +72,10 @@ function Home() {
 
       <div className="mx-auto max-w-7xl px-4 py-8">
         {/* Manchetes */}
-        {lead ? (
+        {headlines.length > 0 ? (
           <section className="grid gap-6 lg:grid-cols-3">
-            <div className="lg:col-span-2">
-              <HeroCard a={lead} />
+            <div className="min-w-0 lg:col-span-2">
+              <HeadlineCarousel articles={headlines} />
             </div>
             <div className="divide-y rounded-lg border bg-card px-4">
               <p className="pt-4 font-display text-sm font-bold uppercase tracking-wider text-brand">Destaques do DF</p>
