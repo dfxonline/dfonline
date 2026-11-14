@@ -8,7 +8,7 @@ import { BusinessCard } from "@/components/site/Cards";
 import { BUSINESSES } from "@/lib/data/businesses";
 import { JOBS } from "@/lib/data/jobs";
 import { getRA } from "@/lib/data/ras";
-import { recentCityNews } from "@/lib/city-news";
+import { homeNewsSections } from "@/lib/home-news";
 import { timeAgo } from "@/lib/format";
 
 export const Route = createFileRoute("/")({
@@ -44,10 +44,7 @@ function Home() {
   const { data: economia } = useSuspenseQuery(editoriaQuery("economia"));
   const { data: ccbb } = useSuspenseQuery(ccbbQuery());
 
-  const headlines = (df.length ? df : ultimas).slice(0, 5);
-  const side = (df.length > 1 ? df.slice(1, 5) : ultimas.slice(1, 5));
-  const dfRest = df.slice(5, 11);
-  const cityNews = recentCityNews(df);
+  const { headlines, side, cityNews, dfRest, brasil } = homeNewsSections(df, ultimas);
   const featuredBiz = BUSINESSES.filter((b) => b.featured).slice(0, 4);
   const featuredJobs = JOBS.filter((j) => j.featured).slice(0, 4);
 
@@ -77,12 +74,12 @@ function Home() {
             <div className="min-w-0 lg:col-span-2">
               <HeadlineCarousel articles={headlines} />
             </div>
-            <div className="divide-y rounded-lg border bg-card px-4">
+            {side.length > 0 && <div className="divide-y rounded-lg border bg-card px-4">
               <p className="pt-4 font-display text-sm font-bold uppercase tracking-wider text-brand">Destaques do DF</p>
               {side.map((a) => (
                 <NewsRow key={a.id} a={a} />
               ))}
-            </div>
+            </div>}
           </section>
         ) : (
           <EmptyNews />
@@ -129,7 +126,7 @@ function Home() {
           <aside>
             <SectionHeader title="Brasil" to={<Link to="/editoria/$slug" params={{ slug: "brasil" }}>Mais →</Link>} />
             <div className="divide-y">
-              {ultimas.slice(0, 7).map((a) => (
+              {brasil.map((a) => (
                 <NewsRow key={a.id} a={a} />
               ))}
             </div>
