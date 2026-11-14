@@ -1,8 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import type { Article } from "@/lib/news-types";
 import { timeAgo } from "@/lib/format";
+import { newsLabel } from "@/lib/news-label";
 import { cn } from "@/lib/utils";
 import fallback from "@/assets/news-esplanada.jpg";
+
+function NewsMeta({ a, overlay = false }: { a: Article; overlay?: boolean }) {
+  return (
+    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+      <span className="rounded bg-primary px-2 py-0.5 text-xs font-bold text-primary-foreground">{newsLabel(a)}</span>
+      <span className={cn("text-xs", overlay ? "text-brand-foreground/85" : "text-muted-foreground")}>{timeAgo(a.date)}</span>
+    </div>
+  );
+}
 
 function Img({ a, className, eager }: { a: Article; className?: string; eager?: boolean }) {
   return (
@@ -23,8 +33,8 @@ export function NewsCard({ a, size = "md" }: { a: Article; size?: "sm" | "md" | 
       <div className={cn("overflow-hidden rounded-md bg-muted", size === "lg" ? "aspect-[16/10]" : "aspect-[16/10]")}>
         <Img a={a} />
       </div>
-      <div className="mt-3 flex items-center gap-2">
-        <span className="text-xs text-muted-foreground">{timeAgo(a.date)}</span>
+      <div className="mt-3">
+        <NewsMeta a={a} />
       </div>
       <h3
         className={cn(
@@ -46,7 +56,7 @@ export function NewsRow({ a }: { a: Article }) {
         <Img a={a} />
       </div>
       <div className="min-w-0">
-        <span className="text-xs text-muted-foreground">{timeAgo(a.date)}</span>
+        <NewsMeta a={a} />
         <h4 className="line-clamp-3 font-display text-[15px] font-semibold leading-snug group-hover:text-primary">{a.title}</h4>
       </div>
     </Link>
@@ -61,6 +71,7 @@ export function HeroCard({ a }: { a: Article }) {
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/40 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
+        <NewsMeta a={a} overlay />
         <h2 className="mt-3 font-display text-2xl font-bold leading-tight text-brand-foreground md:text-4xl">{a.title}</h2>
         <p className="mt-2 hidden max-w-2xl text-brand-foreground/85 md:line-clamp-2">{a.excerpt}</p>
       </div>

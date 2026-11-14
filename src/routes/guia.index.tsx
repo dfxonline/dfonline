@@ -12,6 +12,8 @@ export const Route = createFileRoute("/guia/")({
       { name: "description", content: "Encontre restaurantes, serviços, saúde, comércio e muito mais em todas as cidades do Distrito Federal." },
       { property: "og:title", content: "Guia de Empresas do DF" },
       { property: "og:description", content: "O guia local de negócios de Brasília e das Regiões Administrativas." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Guia,
