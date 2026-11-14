@@ -7,5 +7,5 @@
 - [x] Verificar e responder se existe reescrita automática (não implementada)
 - [x] Manter o objetivo informado pelo usuário e a métrica existente
 - [x] Exibir etiquetas de cidade ou categoria ao lado do horário e verificar
-- [ ] Trocar etiquetas por texto laranja sem fundo
-- [ ] Adicionar sequência de manchetes ao destaque principal mantendo os destaques laterais e verificar
+- [x] Trocar etiquetas por texto laranja sem fundo
+- [x] Adicionar sequência de manchetes ao destaque principal mantendo os destaques laterais e verificar
