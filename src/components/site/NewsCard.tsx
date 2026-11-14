@@ -8,7 +8,7 @@ import fallback from "@/assets/news-esplanada.jpg";
 function NewsMeta({ a, overlay = false }: { a: Article; overlay?: boolean }) {
   return (
     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-      <span className="rounded bg-primary px-2 py-0.5 text-xs font-bold text-primary-foreground">{newsLabel(a)}</span>
+      <span className="text-xs font-bold text-primary">{newsLabel(a)}</span>
       <span className={cn("text-xs", overlay ? "text-brand-foreground/85" : "text-muted-foreground")}>{timeAgo(a.date)}</span>
     </div>
   );
@@ -65,15 +65,15 @@ export function NewsRow({ a }: { a: Article }) {
 
 export function HeroCard({ a }: { a: Article }) {
   return (
-    <Link to="/noticia/$id" params={{ id: a.id }} className="group relative block overflow-hidden rounded-lg bg-brand-deep">
-      <div className="aspect-[16/10] md:aspect-[16/9]">
+    <Link to="/noticia/$id" params={{ id: a.id }} className="group relative grid min-h-[420px] overflow-hidden rounded-lg bg-brand-deep md:min-h-[460px]">
+      <div className="absolute inset-0">
         <Img a={a} eager className="opacity-90" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/40 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
+      <div className="relative self-end p-5 md:p-8">
         <NewsMeta a={a} overlay />
         <h2 className="mt-3 font-display text-2xl font-bold leading-tight text-brand-foreground md:text-4xl">{a.title}</h2>
-        <p className="mt-2 hidden max-w-2xl text-brand-foreground/85 md:line-clamp-2">{a.excerpt}</p>
+        <p className="mt-2 line-clamp-3 max-w-2xl text-sm text-brand-foreground/85 md:text-base">{a.excerpt}</p>
       </div>
     </Link>
   );
