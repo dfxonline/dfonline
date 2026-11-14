@@ -18,6 +18,8 @@ export const Route = createFileRoute("/empregos/$id")({
           { name: "description", content: loaderData.description },
           { property: "og:title", content: `Vaga: ${loaderData.title}` },
           { property: "og:description", content: `${loaderData.company} — ${loaderData.description}` },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Vaga não encontrada — DF Online" }],
   }),

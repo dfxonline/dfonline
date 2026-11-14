@@ -25,6 +25,8 @@ export const Route = createFileRoute("/cidades/$slug")({
           { name: "description", content: `Últimas notícias, empresas e vagas de emprego em ${loaderData.name}, RA ${loaderData.roman} do Distrito Federal.` },
           { property: "og:title", content: `Notícias de ${loaderData.name} — RA ${loaderData.roman}` },
           { property: "og:description", content: `Acompanhe o que acontece em ${loaderData.name}, no DF.` },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Cidade não encontrada — DF Online" }, { name: "robots", content: "noindex" }],
   }),

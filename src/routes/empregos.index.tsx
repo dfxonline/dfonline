@@ -13,6 +13,8 @@ export const Route = createFileRoute("/empregos/")({
       { name: "description", content: "Vagas de emprego em Brasília e em todas as cidades do Distrito Federal. CLT, estágio, jovem aprendiz e mais." },
       { property: "og:title", content: "Vagas de Emprego no DF" },
       { property: "og:description", content: "Encontre sua próxima oportunidade de trabalho no Distrito Federal." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Empregos,

@@ -20,6 +20,8 @@ export const Route = createFileRoute("/editoria/$slug")({
           { name: "description", content: `${loaderData.description} Notícias atualizadas no DF Online.` },
           { property: "og:title", content: `${loaderData.label} — DF Online` },
           { property: "og:description", content: loaderData.description },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Editoria não encontrada — DF Online" }],
   }),

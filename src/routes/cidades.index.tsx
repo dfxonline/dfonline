@@ -9,6 +9,8 @@ export const Route = createFileRoute("/cidades/")({
       { name: "description", content: "Notícias de todas as Regiões Administrativas do Distrito Federal, da RA I Plano Piloto à RA XXXV Água Quente." },
       { property: "og:title", content: "Cidades do DF — As 35 Regiões Administrativas" },
       { property: "og:description", content: "Escolha sua cidade e acompanhe as notícias da sua Região Administrativa." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Cidades,

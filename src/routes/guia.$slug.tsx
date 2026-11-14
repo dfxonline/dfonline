@@ -18,6 +18,8 @@ export const Route = createFileRoute("/guia/$slug")({
           { name: "description", content: loaderData.short },
           { property: "og:title", content: `${loaderData.name} · ${loaderData.category}` },
           { property: "og:description", content: loaderData.short },
+          { property: "og:type", content: "website" },
+          { name: "twitter:card", content: "summary_large_image" },
         ]
       : [{ title: "Empresa não encontrada — DF Online" }],
   }),
