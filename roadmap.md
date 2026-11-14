@@ -6,4 +6,4 @@
 - [x] Exibir assinatura Redação DF Online, data e hora
 - [x] Verificar e responder se existe reescrita automática (não implementada)
 - [x] Manter o objetivo informado pelo usuário e a métrica existente
-- [ ] Exibir etiquetas de cidade ou categoria ao lado do horário e verificar
+- [x] Exibir etiquetas de cidade ou categoria ao lado do horário e verificar
