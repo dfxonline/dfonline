@@ -1,4 +1,9 @@
 # Roadmap
+- [ ] Criar painel administrativo em /painel/ com login, nome, foto e permissões de administrador.
+- [ ] Cadastro e importação de notícias e empregos; cadastro de empresas com fotos e páginas próprias.
+- [ ] Rascunhos incompletos, pré-visualização, publicação com pendências clicáveis, edição e arquivamento.
+- [ ] Persistência e arquivos: confirmar localização/configuração de D1 e R2, ausentes no projeto consultado; não substituir sem autorização.
+- [ ] Preservar publicações existentes e verificar o fluxo autenticado completo e o acesso negado a não administradores.
 - [x] Separar as notícias do slide, destaques, cidades e Distrito Federal sem repetições e verificar
 - [x] Portal DF Online (home, cidades/RAs, editorias, guia, empregos)
 - [x] Corrigir 404 em todas as páginas (erros de build)
