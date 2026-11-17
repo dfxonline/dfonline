@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Separar as notícias do slide, destaques, cidades e Distrito Federal sem repetições e verificar
+- [x] Separar as notícias do slide, destaques, cidades e Distrito Federal sem repetições e verificar
 - [x] Portal DF Online (home, cidades/RAs, editorias, guia, empregos)
 - [x] Corrigir 404 em todas as páginas (erros de build)
 - [x] Retirar fontes dos destaques e manter referências dentro da matéria
