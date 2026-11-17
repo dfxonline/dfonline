@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Briefcase, ChevronDown, MapPin, Menu, X } from "lucide-react";
 import { HeaderLogo } from "./Logo";
 import { RAS } from "@/lib/data/ras";
 import { EDITORIAS } from "@/lib/news-types";
+import { Button } from "@/components/ui/button";
 
 function Today() {
   const [d] = useState(() =>
@@ -29,12 +30,12 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3">
         <HeaderLogo />
         <div className="hidden items-center gap-2 md:flex">
-          <Link to="/guia" className="rounded-md px-4 py-2 text-sm font-semibold text-brand hover:bg-secondary">
-            Guia de Empresas
-          </Link>
-          <Link to="/empregos" className="rounded-md bg-primary px-4 py-2 text-sm font-bold text-primary-foreground hover:bg-primary/90">
-            Vagas de emprego
-          </Link>
+          <Button asChild variant="ghost" className="text-brand hover:text-brand">
+            <Link to="/empregos"><Briefcase aria-hidden="true" /> Vagas de emprego</Link>
+          </Button>
+          <Button asChild className="font-bold">
+            <Link to="/guia"><MapPin aria-hidden="true" /> Guia de Empresas</Link>
+          </Button>
         </div>
         <button className="rounded-md p-2 text-brand md:hidden" onClick={() => setOpen((o) => !o)} aria-label="Abrir menu">
           {open ? <X /> : <Menu />}
@@ -54,11 +55,11 @@ export function SiteHeader() {
               {e.label}
             </Link>
           ))}
-          <Link to="/guia" className={navLink} activeProps={{ className: "bg-brand-deep" }}>
-            Guia
-          </Link>
           <Link to="/empregos" className={navLink} activeProps={{ className: "bg-brand-deep" }}>
             Empregos
+          </Link>
+          <Link to="/guia" className={navLink} activeProps={{ className: "bg-brand-deep" }}>
+            Guia
           </Link>
 
           {citiesOpen && (
@@ -99,8 +100,14 @@ export function SiteHeader() {
                 {e.label}
               </Link>
             ))}
-            <Link to="/guia" className={navLink} onClick={() => setOpen(false)}>Guia de Empresas</Link>
-            <Link to="/empregos" className={navLink} onClick={() => setOpen(false)}>Empregos</Link>
+            <div className="mt-2 flex flex-col gap-2 bg-background p-3">
+              <Button asChild variant="ghost" className="justify-start text-brand hover:text-brand">
+                <Link to="/empregos" onClick={() => setOpen(false)}><Briefcase aria-hidden="true" /> Vagas de emprego</Link>
+              </Button>
+              <Button asChild className="justify-start font-bold">
+                <Link to="/guia" onClick={() => setOpen(false)}><MapPin aria-hidden="true" /> Guia de Empresas</Link>
+              </Button>
+            </div>
           </div>
         </div>
       )}
